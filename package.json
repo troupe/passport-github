@@ -1,5 +1,6 @@
 {
   "name": "troupe-passport-github",
+  "private": true,
   "version": "0.1.7",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": ["passport", "github", "auth", "authn", "authentication", "identity"],
