@@ -1,11 +1,15 @@
 {
   "name": "troupe-passport-github",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "temp fix",
   "licenses": [ {
     "type": "MIT",
     "url": "http://www.opensource.org/licenses/MIT" 
   } ],
+  "repository": {
+    "type" : "git",
+    "url" : "http://github.com/troupe/passport-github.git"
+  },
   "main": "./lib/passport-github",
   "dependencies": {
     "pkginfo": "0.2.x",
