@@ -1,7 +1,7 @@
 {
   "name": "troupe-passport-github",
   "private": true,
-  "version": "0.1.8c",
+  "version": "0.1.8d",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": ["passport", "github", "auth", "authn", "authentication", "identity"],
   "repository": {
@@ -23,7 +23,7 @@
   "main": "./lib/passport-github",
   "dependencies": {
     "pkginfo": "0.2.x",
-    "passport-oauth": "git://github.com/troupe/passport-oauth#v1.0.0c"
+    "passport-oauth": "git://github.com/troupe/passport-oauth#v1.0.0d"
   },
   "devDependencies": {
     "vows": "~0.7.x"
