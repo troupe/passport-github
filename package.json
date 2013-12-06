@@ -23,7 +23,7 @@
   "main": "./lib/passport-github",
   "dependencies": {
     "pkginfo": "0.2.x",
-    "passport-oauth": "~1.0.0"
+    "passport-oauth": "git://github.com/troupe/passport-oauth#v1.0.0c"
   },
   "devDependencies": {
     "vows": "~0.7.x"
