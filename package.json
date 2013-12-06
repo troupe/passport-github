@@ -9,7 +9,7 @@
   "main": "./lib/passport-github",
   "dependencies": {
     "pkginfo": "0.2.x",
-    "passport-oauth": "0.1.x"
+    "passport-oauth": "~1.0.0"
   },
   "devDependencies": {
     "vows": "0.6.x"
