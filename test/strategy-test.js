@@ -1,11 +1,11 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var GitHubStrategy = require('passport-github/strategy');
+var GitHubStrategy = require('../lib/passport-github/strategy');
 
 
 vows.describe('GitHubStrategy').addBatch({
-  
+
   'strategy': {
     topic: function() {
       return new GitHubStrategy({
@@ -14,7 +14,7 @@ vows.describe('GitHubStrategy').addBatch({
       },
       function() {});
     },
-    
+
     'should be named github': function (strategy) {
       assert.equal(strategy.name, 'github');
     },
@@ -22,7 +22,7 @@ vows.describe('GitHubStrategy').addBatch({
       assert.equal(strategy._oauth2._customHeaders['User-Agent'], 'passport-github');
     },
   },
-  
+
   'strategy with user agent option': {
     topic: function() {
       return new GitHubStrategy({
@@ -32,12 +32,12 @@ vows.describe('GitHubStrategy').addBatch({
       },
       function() {});
     },
-    
+
     'should have correct user agent': function (strategy) {
       assert.equal(strategy._oauth2._customHeaders['User-Agent'], 'example.com');
     },
   },
-  
+
   'strategy with user agent option in custom headers': {
     topic: function() {
       return new GitHubStrategy({
@@ -47,12 +47,12 @@ vows.describe('GitHubStrategy').addBatch({
       },
       function() {});
     },
-    
+
     'should have correct user agent': function (strategy) {
       assert.equal(strategy._oauth2._customHeaders['User-Agent'], 'example2.com');
     },
   },
-  
+
   'strategy with user agent option in custom headers and explicit option': {
     topic: function() {
       return new GitHubStrategy({
@@ -63,12 +63,12 @@ vows.describe('GitHubStrategy').addBatch({
       },
       function() {});
     },
-    
+
     'should prefer custom headers': function (strategy) {
       assert.equal(strategy._oauth2._customHeaders['User-Agent'], 'example2.com');
     },
   },
-  
+
   'strategy when loading user profile': {
     topic: function() {
       var strategy = new GitHubStrategy({
@@ -76,7 +76,7 @@ vows.describe('GitHubStrategy').addBatch({
         clientSecret: 'secret'
       },
       function() {});
-      
+
       // mock
       strategy._oauth2.get = function(url, accessToken, callback) {
         if (url == 'https://api.github.com/user') {
@@ -86,22 +86,22 @@ vows.describe('GitHubStrategy').addBatch({
           callback(new Error('Incorrect user profile URL'));
         }
       }
-      
+
       return strategy;
     },
-    
+
     'when told to load user profile': {
       topic: function(strategy) {
         var self = this;
         function done(err, profile) {
           self.callback(err, profile);
         }
-        
+
         process.nextTick(function () {
           strategy.userProfile('access-token', done);
         });
       },
-      
+
       'should not error' : function(err, req) {
         assert.isNull(err);
       },
@@ -122,7 +122,7 @@ vows.describe('GitHubStrategy').addBatch({
       },
     },
   },
-  
+
   'strategy when loading user profile from custom URL': {
     topic: function() {
       var strategy = new GitHubStrategy({
@@ -131,7 +131,7 @@ vows.describe('GitHubStrategy').addBatch({
         userProfileURL: 'https://github.corpDomain/api/v3/user',
       },
       function() {});
-      
+
       // mock
       strategy._oauth2.get = function(url, accessToken, callback) {
         if (url == 'https://github.corpDomain/api/v3/user') {
@@ -141,22 +141,22 @@ vows.describe('GitHubStrategy').addBatch({
           callback(new Error('Incorrect user profile URL'));
         }
       }
-      
+
       return strategy;
     },
-    
+
     'when told to load user profile': {
       topic: function(strategy) {
         var self = this;
         function done(err, profile) {
           self.callback(err, profile);
         }
-        
+
         process.nextTick(function () {
           strategy.userProfile('access-token', done);
         });
       },
-      
+
       'should not error' : function(err, req) {
         assert.isNull(err);
       },
@@ -177,7 +177,7 @@ vows.describe('GitHubStrategy').addBatch({
       },
     },
   },
-  
+
   'strategy when loading user profile and encountering an error': {
     topic: function() {
       var strategy = new GitHubStrategy({
@@ -185,27 +185,27 @@ vows.describe('GitHubStrategy').addBatch({
         clientSecret: 'secret'
       },
       function() {});
-      
+
       // mock
       strategy._oauth2.get = function(url, accessToken, callback) {
         callback(new Error('something-went-wrong'));
       }
-      
+
       return strategy;
     },
-    
+
     'when told to load user profile': {
       topic: function(strategy) {
         var self = this;
         function done(err, profile) {
           self.callback(err, profile);
         }
-        
+
         process.nextTick(function () {
           strategy.userProfile('access-token', done);
         });
       },
-      
+
       'should error' : function(err, req) {
         assert.isNotNull(err);
       },
@@ -217,5 +217,5 @@ vows.describe('GitHubStrategy').addBatch({
       },
     },
   },
-  
+
 }).export(module);

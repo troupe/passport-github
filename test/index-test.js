@@ -1,8 +1,7 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var github = require('passport-github');
-
+var github = require('../lib/passport-github/index.js');
 
 vows.describe('passport-github').addBatch({
   
