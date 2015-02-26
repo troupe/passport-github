@@ -1,6 +1,6 @@
 {
   "name": "gitter-passport-github",
-  "version": "0.1.8-e",
+  "version": "0.1.8-f",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": [
     "passport",
