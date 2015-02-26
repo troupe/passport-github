@@ -30,7 +30,7 @@
   ],
   "main": "./lib/passport-github",
   "dependencies": {
-    "gitter-passport-oauth": "^1.0.0-e",
+    "gitter-passport-oauth": "^1.0.0-f",
     "pkginfo": "0.2.x"
   },
   "devDependencies": {
